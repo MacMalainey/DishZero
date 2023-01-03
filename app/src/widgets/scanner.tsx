@@ -102,18 +102,22 @@ const CameraInput = ({ onSubmit }) => {
             </div>
             <div
                 className="qr-scanner-placeholder"
+                onClick={() => setShowQr(!showQr)}
                 style={style}
             >
                 <div className="position-absolute">
                     <Button
                         variant="secondary"
-                        onClick={() => setFrontCamera(!frontCamera)}
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            setFrontCamera(!frontCamera)
+                        }}
                     >
                         <FontAwesomeIcon icon={faCameraRotate} />
                     </Button>
                 </div>
 
-                <div className="qr-scanner-tag" onClick={() => setShowQr(!showQr)}>
+                <div className="qr-scanner-tag">
                     {/* <div className="crosshair"/> */}
 
                     {showQr ? (
